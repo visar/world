@@ -9,6 +9,7 @@ flask-restful = "*"
 flask-sqlalchemy = "*"
 psycopg2-binary = "*"
 marshmallow = "*"
+webargs = "*"
 
 [dev-packages]
 pre-commit = "*"

@@ -45,3 +45,10 @@ class Country(db.Model):
     @classmethod
     def get_by_countrycode(cls, country_code):
         return cls.query.filter_by(code=country_code).first()
+
+    @classmethod
+    def get_all_by_region(cls, region=None):
+        if not region:
+            return cls.query.all()
+        else:
+            return cls.query.filter_by(region=region).all()

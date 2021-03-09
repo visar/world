@@ -3,6 +3,8 @@ from http import HTTPStatus
 from flask import request
 from flask_restful import Resource
 from marshmallow.exceptions import ValidationError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 from models.city import City
 from models.country import Country
@@ -15,8 +17,12 @@ country_list_schema = CountrySchema(many=True)
 
 
 class CountryListResource(Resource):
-    def get(self):
-        countries = Country.get_all()
+    @use_kwargs({'region': fields.String(missing=None)}, location='query')
+    def get(self, region):
+        countries = Country.get_all_by_region(region=region)
+
+        if countries is None:
+            return {'message': 'Could not find any country.'}, HTTPStatus.NOT_FOUND
 
         return country_list_schema.dump(countries), HTTPStatus.OK
 

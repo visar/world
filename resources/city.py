@@ -16,6 +16,9 @@ class CityListResource(Resource):
     def get(self):
         cities = City.get_all()
 
+        if cities is None:
+            return {'message': 'Could not find any city.'}, HTTPStatus.NOT_FOUND
+
         return city_list_schema.dump(cities), HTTPStatus.OK
 
     def post(self):
