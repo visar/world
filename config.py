@@ -1,0 +1,18 @@
+import os
+
+DB_USERNAME = os.getenv('DB_USERNAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_DATABASE = os.getenv('DB_DATABASE')
+DB_HOSTNAME = os.getenv('DB_HOSTNAME')
+DB_PORT = os.getenv('DB_PORT')
+SECRET_KEY = os.getenv('SECRET_KEY')
+FLASK_DEBUG = os.getenv('FLASK_DEBUG', False)
+
+
+class Config:
+    DEBUG = FLASK_DEBUG
+
+    SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}:{DB_PORT}/{DB_DATABASE}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    SECRET_KEY = SECRET_KEY
