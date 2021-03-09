@@ -18,6 +18,10 @@ class City(db.Model):
     def get_by_id(cls, city_id):
         return cls.query.filter_by(id=city_id).first()
 
+    @classmethod
+    def get_by_countrycode(cls, country_code):
+        return cls.query.filter_by(countrycode=country_code).all()
+
     def save(self):
         db.session.add(self)
         db.session.commit()
