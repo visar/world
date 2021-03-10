@@ -4,6 +4,7 @@ from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
+from extensions import cache
 from models.city import City
 from models.country import Country
 from models.country_language import CountryLanguage
@@ -14,6 +15,7 @@ country_list_schema = CountrySchema(many=True)
 
 
 class CountryListResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     @use_kwargs({'region': fields.String(missing=None)}, location='query')
     def get(self, region):
         countries = Country.get_all_by_region(region=region)
@@ -25,6 +27,7 @@ class CountryListResource(Resource):
 
 
 class CountryResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     def get(self, country_code):
         country = Country.get_by_countrycode(country_code=country_code)
 

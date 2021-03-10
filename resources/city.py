@@ -4,8 +4,10 @@ from flask import request
 from flask_restful import Resource
 from marshmallow.exceptions import ValidationError
 
+from extensions import cache
 from models.city import City
 from schemas.city import CitySchema
+from utils import clear_cache
 from utils import gen_id
 
 city_schema = CitySchema()
@@ -13,6 +15,7 @@ city_list_schema = CitySchema(many=True)
 
 
 class CityListResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     def get(self):
         cities = City.get_all()
 
@@ -36,13 +39,15 @@ class CityListResource(Resource):
             id = gen_id()
 
         city.id = id
-
         city.save()
+
+        clear_cache('/cities')
 
         return city_schema.dump(city), HTTPStatus.CREATED
 
 
 class CityResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     def get(self, city_id):
         city = City.get_by_id(city_id=city_id)
 
@@ -70,6 +75,10 @@ class CityResource(Resource):
         city.district = data.get('district') or city.district
         city.population = data.get('population') or city.population
 
+        city.save()
+
+        clear_cache('/cities')
+
         return city_schema.dump(city), HTTPStatus.OK
 
     def delete(self, city_id):
@@ -79,5 +88,7 @@ class CityResource(Resource):
             return {'message': 'City not found'}, HTTPStatus.NOT_FOUND
 
         city.delete()
+
+        clear_cache('/cities')
 
         return {}, HTTPStatus.NO_CONTENT

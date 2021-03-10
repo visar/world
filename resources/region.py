@@ -4,6 +4,7 @@ from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
+from extensions import cache
 from models.country import Country
 from schemas.region import RegionSchema
 
@@ -11,6 +12,7 @@ region_list_schema = RegionSchema(many=True)
 
 
 class RegionListResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     @use_kwargs({'continent': fields.String(missing=None)}, location='query')
     def get(self, continent):
         regions = Country.get_all_regions_of_continent(continent=continent)

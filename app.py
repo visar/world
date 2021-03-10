@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 
 from config import Config
+from extensions import cache
 from extensions import db
 from resources.city import CityListResource
 from resources.city import CityResource
@@ -23,6 +24,20 @@ def create_app():
 
 def register_extensions(app):
     db.init_app(app)
+    cache.init_app(app)
+
+    # @app.before_request
+    # def before_request():
+    #     print('\n==================== BEFORE REQUEST ====================\n')
+    #     print(cache.cache._cache.keys())
+    #     print('\n=======================================================\n')
+
+    # @app.after_request
+    # def after_request(response):
+    #     print('\n==================== AFTER REQUEST ====================\n')
+    #     print(cache.cache._cache.keys())
+    #     print('\n=======================================================\n')
+    #     return response
 
 
 def register_resources(app):

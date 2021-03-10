@@ -16,3 +16,6 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SECRET_KEY = SECRET_KEY
+
+    CACHE_TYPE = 'simple'
+    CACHE_DEFAULT_TIMEOUT = 10 * 60

@@ -2,6 +2,7 @@ from http import HTTPStatus
 
 from flask_restful import Resource
 
+from extensions import cache
 from models.country import Country
 from schemas.continent import ContinentSchema
 
@@ -9,6 +10,7 @@ continent_list_schema = ContinentSchema(many=True)
 
 
 class ContinentListResource(Resource):
+    @cache.cached(timeout=60, query_string=True)
     def get(self):
         continents = Country.get_continents()
 
