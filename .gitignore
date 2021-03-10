@@ -17,3 +17,5 @@ build/
 
 .env
 scripts/init.sql
+
+.idea
