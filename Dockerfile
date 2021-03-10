@@ -9,6 +9,5 @@ WORKDIR /app
 COPY --from=builder /app/dist/app-${VERSION}-py3-none-any.whl .
 RUN pip install app-${VERSION}-py3-none-any.whl
 RUN pip install gunicorn
-RUN pip show app
 EXPOSE 8000
 CMD ["/usr/local/bin/gunicorn", "app:create_app()", "-b", "0.0.0.0:8000"]

@@ -19,6 +19,7 @@ setup(
         'flask-sqlalchemy',
         'marshmallow',
         'psycopg2-binary',
+        'redis',
         'webargs',
     ],
     classifiers=[

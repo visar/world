@@ -1,5 +1,6 @@
 from http import HTTPStatus
 
+from flask import current_app
 from flask import request
 from flask_restful import Resource
 from marshmallow.exceptions import ValidationError
@@ -7,7 +8,7 @@ from marshmallow.exceptions import ValidationError
 from ..extensions import cache
 from ..models.city import City
 from ..schemas.city import CitySchema
-from ..utils import clear_cache
+from ..utils import clear_redis_cache
 from ..utils import gen_id
 
 city_schema = CitySchema()
@@ -41,7 +42,7 @@ class CityListResource(Resource):
         city.id = id
         city.save()
 
-        clear_cache('/cities')
+        clear_redis_cache(f'{current_app.config["CACHE_KEY_PREFIX"]}*/cities*')
 
         return city_schema.dump(city), HTTPStatus.CREATED
 
@@ -77,7 +78,7 @@ class CityResource(Resource):
 
         city.save()
 
-        clear_cache('/cities')
+        clear_redis_cache(f'{current_app.config["CACHE_KEY_PREFIX"]}*/cities*')
 
         return city_schema.dump(city), HTTPStatus.OK
 
@@ -89,6 +90,6 @@ class CityResource(Resource):
 
         city.delete()
 
-        clear_cache('/cities')
+        clear_redis_cache(f'{current_app.config["CACHE_KEY_PREFIX"]}*/cities*')
 
         return {}, HTTPStatus.NO_CONTENT
