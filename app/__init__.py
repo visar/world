@@ -1,15 +1,19 @@
+__title__ = 'app'
+__version__ = '0.0.1'
+
+
 from flask import Flask
 from flask_restful import Api
 
-from config import Config
-from extensions import cache
-from extensions import db
-from resources.city import CityListResource
-from resources.city import CityResource
-from resources.continent import ContinentListResource
-from resources.country import CountryListResource
-from resources.country import CountryResource
-from resources.region import RegionListResource
+from .config import Config
+from .extensions import cache
+from .extensions import db
+from .resources.city import CityListResource
+from .resources.city import CityResource
+from .resources.continent import ContinentListResource
+from .resources.country import CountryListResource
+from .resources.country import CountryResource
+from .resources.region import RegionListResource
 
 
 def create_app():

@@ -1,0 +1,4 @@
+graft app/models
+graft app/resources
+graft app/schemas
+global-exclude *.pyc

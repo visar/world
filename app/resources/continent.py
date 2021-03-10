@@ -2,9 +2,9 @@ from http import HTTPStatus
 
 from flask_restful import Resource
 
-from extensions import cache
-from models.country import Country
-from schemas.continent import ContinentSchema
+from ..extensions import cache
+from ..models.country import Country
+from ..schemas.continent import ContinentSchema
 
 continent_list_schema = ContinentSchema(many=True)
 

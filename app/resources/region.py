@@ -4,9 +4,9 @@ from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
-from extensions import cache
-from models.country import Country
-from schemas.region import RegionSchema
+from ..extensions import cache
+from ..models.country import Country
+from ..schemas.region import RegionSchema
 
 region_list_schema = RegionSchema(many=True)
 

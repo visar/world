@@ -4,11 +4,11 @@ from flask import request
 from flask_restful import Resource
 from marshmallow.exceptions import ValidationError
 
-from extensions import cache
-from models.city import City
-from schemas.city import CitySchema
-from utils import clear_cache
-from utils import gen_id
+from ..extensions import cache
+from ..models.city import City
+from ..schemas.city import CitySchema
+from ..utils import clear_cache
+from ..utils import gen_id
 
 city_schema = CitySchema()
 city_list_schema = CitySchema(many=True)

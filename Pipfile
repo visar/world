@@ -18,6 +18,9 @@ pylint = "*"
 autopep8 = "*"
 httpie = "*"
 rope = "*"
+wheel = "*"
+bump2version = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

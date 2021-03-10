@@ -3,8 +3,8 @@ from marshmallow import fields
 from marshmallow import post_dump
 from marshmallow import validate
 
-from schemas.city import CitySchema
-from schemas.country_language import CountryLanguageSchema
+from ..schemas.city import CitySchema
+from ..schemas.country_language import CountryLanguageSchema
 
 
 class CountrySchema(Schema):

@@ -4,11 +4,11 @@ from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
-from extensions import cache
-from models.city import City
-from models.country import Country
-from models.country_language import CountryLanguage
-from schemas.country import CountrySchema
+from ..extensions import cache
+from ..models.city import City
+from ..models.country import Country
+from ..models.country_language import CountryLanguage
+from ..schemas.country import CountrySchema
 
 country_schema = CountrySchema()
 country_list_schema = CountrySchema(many=True)

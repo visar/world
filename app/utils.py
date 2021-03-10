@@ -1,6 +1,6 @@
 import uuid
 
-from extensions import cache
+from .extensions import cache
 
 
 def gen_id():
