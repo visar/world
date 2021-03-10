@@ -59,3 +59,7 @@ class Country(db.Model):
             return cls.query.with_entities(Country.region).distinct().all()
         else:
             return cls.query.filter_by(continent=continent).with_entities(Country.region).distinct().all()
+
+    @classmethod
+    def get_continents(cls):
+        return cls.query.with_entities(Country.continent).distinct().all()

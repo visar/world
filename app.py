@@ -5,6 +5,7 @@ from config import Config
 from extensions import db
 from resources.city import CityListResource
 from resources.city import CityResource
+from resources.continent import ContinentListResource
 from resources.country import CountryListResource
 from resources.country import CountryResource
 from resources.region import RegionListResource
@@ -34,6 +35,8 @@ def register_resources(app):
     api.add_resource(CountryResource, '/countries/<string:country_code>')
 
     api.add_resource(RegionListResource, '/regions')
+
+    api.add_resource(ContinentListResource, '/continents')
 
 
 if __name__ == '__main__':
