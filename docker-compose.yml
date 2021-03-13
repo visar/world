@@ -3,29 +3,37 @@ version: '3.8'
 services:
   db:
     image: postgres:13
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - 5432:5432
     env_file:
       - .env
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
+  redis:
+    image: redis
+    # ports:
+    #   - 6379:6379
+    restart: always
   app:
     build: .
     env_file:
       - .env
-    volumes:
-      - app_data:/app
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - 8000:8000
     depends_on:
       - db
+      - redis
     restart: always
-  redis:
-    image: redis
+  nginx:
+    image: nginx:stable
     ports:
-      - 6379:6379
+      - 8080:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    restart: always
 volumes:
   db_data:
-  app_data:

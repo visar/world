@@ -24,12 +24,12 @@ populated.
 
    docker-compose up --force-recreate --build
 
--  You should have the app running on port 8000. Try hitting the
-   ``/cities/`` endpoint for example:
+-  You should have the app running on port 8080. Try hitting the
+   ``/cities`` endpoint for example:
 
 .. code:: shell
 
-   curl -X GET http://localhost:8000/cities
+   curl -X GET http://localhost:8080/cities
 
 You may use whatever tool you like (``http`` from ``httpie`` for
 example), or you can run the Postman collection from ``tests/postman``.
