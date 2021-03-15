@@ -1,0 +1,21 @@
+{
+  "extends": [
+      "standard"
+  ],
+  "env": {
+      "es6": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 8
+  },
+  "rules": {
+      "no-unused-vars": "off",
+      "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1,
+            "maxEOF": 0
+          }
+        ]
+  }
+}

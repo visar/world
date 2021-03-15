@@ -35,5 +35,14 @@ services:
     depends_on:
       - app
     restart: always
+  fe:
+    build: fe
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    depends_on:
+      - nginx
+    restart: always
 volumes:
   db_data:

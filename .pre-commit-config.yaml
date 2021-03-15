@@ -14,6 +14,7 @@ repos:  # nosec
       - id: debug-statements
       - id: check-yaml
       - id: check-added-large-files
+        exclude: fe/package-lock.json
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.4
     hooks:
