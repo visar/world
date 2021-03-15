@@ -12,6 +12,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import ListSubheader from '@material-ui/core/ListSubheader'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { useParams, useHistory } from 'react-router-dom'
 
@@ -30,7 +31,7 @@ const Country = () => {
   }
 
   if (isLoading) {
-    return (<Alert severity="info">Loading...</Alert>)
+    return <CircularProgress />
   }
 
   return (

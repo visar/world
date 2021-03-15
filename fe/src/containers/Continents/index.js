@@ -7,6 +7,7 @@ import useContinents from 'api/continents'
 import Alert from '@material-ui/lab/Alert'
 import Divider from '@material-ui/core/Divider'
 import ListSubheader from '@material-ui/core/ListSubheader'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { useHistory } from 'react-router-dom'
 
@@ -23,7 +24,7 @@ const Continents = () => {
   }
 
   if (isLoading) {
-    return (<Alert severity="info">Loading...</Alert>)
+    return <CircularProgress />
   }
 
   return (
