@@ -24,8 +24,9 @@ populated.
 
    docker-compose up --force-recreate --build
 
--  You should have the app running on port 8080. Try hitting the
-   ``/cities`` endpoint for example:
+-  You should have the api running on port 8080, while the frontend
+   should be up on port 5000. Try hitting the ``/cities`` endpoint for
+   example:
 
 .. code:: shell
 
@@ -33,3 +34,4 @@ populated.
 
 You may use whatever tool you like (``http`` from ``httpie`` for
 example), or you can run the Postman collection from ``tests/postman``.
+Open ``http://localhost:5000/`` with your browser.
