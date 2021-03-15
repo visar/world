@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
-
+import Alert from '@material-ui/lab/Alert'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import useContinents from 'api/continents'
-import Alert from '@material-ui/lab/Alert'
-import Divider from '@material-ui/core/Divider'
 import ListSubheader from '@material-ui/core/ListSubheader'
-import CircularProgress from '@material-ui/core/CircularProgress'
-
+import useContinents from 'api/continents'
 import { useHistory } from 'react-router-dom'
 
 const Continents = () => {

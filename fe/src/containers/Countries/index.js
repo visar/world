@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react'
-
+import { useHistory, useParams } from 'react-router-dom'
+import Alert from '@material-ui/lab/Alert'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import useCountries from 'api/countries'
-
-import Alert from '@material-ui/lab/Alert'
-
-import Divider from '@material-ui/core/Divider'
 import ListSubheader from '@material-ui/core/ListSubheader'
-import CircularProgress from '@material-ui/core/CircularProgress'
-
-import { useParams, useHistory } from 'react-router-dom'
+import useCountries from 'api/countries'
 
 const Countries = () => {
   const params = useParams()

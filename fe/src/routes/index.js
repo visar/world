@@ -1,9 +1,9 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Continents from 'containers/Continents'
-import Regions from 'containers/Regions'
 import Countries from 'containers/Countries'
 import Country from 'containers/Country'
+import React from 'react'
+import Regions from 'containers/Regions'
 
 const Routes = () => {
   return (

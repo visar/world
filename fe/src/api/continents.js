@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import Request from 'utils/Request'
+import { useState } from 'react'
 
 const Continents = () => {
   const [continents, setContinents] = useState([])

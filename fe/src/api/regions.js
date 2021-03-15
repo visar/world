@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import Request from 'utils/Request'
+import { useState } from 'react'
 
 const Regions = () => {
   const [regions, setRegions] = useState([])
